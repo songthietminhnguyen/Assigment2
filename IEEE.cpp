@@ -1,5 +1,4 @@
 #include <stdint.h>
-
 #include <bitset>
 #include <cmath>
 #include <cstdint>
@@ -26,9 +25,10 @@ float ieee_754(uint32_t const data) {
     uint32_t mantissaBits = data & 0x7FFFFF;
     float mantissa = 1.0f (float)mantissaBits/(1<<23);
     float value = mantissa * pow(2.0f, exponent);
-
+    if (sign == 1) {
+      value = -value;
     }
-
+    return value;
 void header() {
     cout << left << setw(table_width[0]) << setfill(' ') << "pass/fail";
     cout << left << setw(table_width[1]) << setfill(' ') << "value";
