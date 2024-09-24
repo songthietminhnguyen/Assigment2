@@ -22,8 +22,10 @@ uint8_t const bias = 127U;
 
 float ieee_754(uint32_t const data) {
     int sign = (data >> 31) & 1;
-    int exponent = (data >> 23) & 0xff) - 127;
+    int exponent = ((data >> 23) & 0xff) - 127;
     uint32_t mantissaBits = data & 0x7FFFFF;
+    float mantissa = 1.0f (float)mantissaBits/(1<<23);
+
     }
 
 void header() {
