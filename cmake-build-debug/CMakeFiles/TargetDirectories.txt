@@ -1,0 +1,3 @@
+C:/Users/songt/source/repos/Assigment2/cmake-build-debug/CMakeFiles/Assigment2.dir
+C:/Users/songt/source/repos/Assigment2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/songt/source/repos/Assigment2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -19,16 +19,33 @@ uint8_t const exp_width = 8U;
 uint8_t const mantissa_width = width - exp_width - 1;
 uint8_t const bias = 127U;
 
+
 float ieee_754(uint32_t const data) {
+    // Extract the sign (bit 31)
     int sign = (data >> 31) & 1;
-    int exponent = ((data >> 23) & 0xff) - 127;
+
+    // Extract the exponent (bits 30 to 23)
+    int exponent = ((data >> 23) & 0xFF) - bias;
+
+    // Extract the mantissa (bits 22 to 0)
     uint32_t mantissaBits = data & 0x7FFFFF;
-    float mantissa = 1.0f (float)mantissaBits/(1<<23);
+    float mantissa = 1.0f + static_cast<float>(mantissaBits) / (1 << 23);
+
+    // Calculate the floating-point value
     float value = mantissa * pow(2.0f, exponent);
+
+    // Apply the sign
     if (sign == 1) {
-      value = -value;
+        value = -value;
     }
+
     return value;
+}
+
+/*
+ * *** STUDENTS SHOULD NOT NEED TO CHANGE THE CODE BELOW. IT IS A CUSTOM TEST HARNESS. ***
+ */
+
 void header() {
     cout << left << setw(table_width[0]) << setfill(' ') << "pass/fail";
     cout << left << setw(table_width[1]) << setfill(' ') << "value";
@@ -111,3 +128,4 @@ int main() {
     }
     return 0;
 }
+
