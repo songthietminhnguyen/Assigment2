@@ -23,10 +23,8 @@ uint8_t const bias = 127U;
 float ieee_754(uint32_t const data) {
     int sign = (data >> 31) & 1;
     int exponent = (data >> 23) & 0xff) - 127;
-
-/*
- * *** STUDENTS SHOULD NOT NEED TO CHANGE THE CODE BELOW. IT IS A CUSTOM TEST HARNESS. ***
- */
+    uint32_t mantissaBits = data & 0x7FFFFF;
+    }
 
 void header() {
     cout << left << setw(table_width[0]) << setfill(' ') << "pass/fail";
