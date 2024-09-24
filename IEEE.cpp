@@ -25,6 +25,7 @@ float ieee_754(uint32_t const data) {
     int exponent = ((data >> 23) & 0xff) - 127;
     uint32_t mantissaBits = data & 0x7FFFFF;
     float mantissa = 1.0f (float)mantissaBits/(1<<23);
+    float value = mantissa * pow(2.0f, exponent);
 
     }
 
